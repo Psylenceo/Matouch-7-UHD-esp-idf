@@ -43,10 +43,11 @@ void example_lvgl_demo_ui(lv_disp_t *disp)
 {
     lv_obj_t *scr = lv_disp_get_scr_act(disp);
     lv_obj_t *chart = lv_chart_create(scr);
-    lv_obj_set_size(chart, 200, 150);
+    lv_obj_set_size(chart, 700, 500);
     lv_obj_align(chart, LV_ALIGN_CENTER, 0, 0);
     lv_obj_add_event_cb(chart, draw_event_cb, LV_EVENT_DRAW_PART_BEGIN, NULL);
     lv_obj_set_style_line_width(chart, 0, LV_PART_ITEMS);   /*Remove the lines*/
+    
 
     lv_chart_set_type(chart, LV_CHART_TYPE_SCATTER);
 

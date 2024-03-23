@@ -73,6 +73,7 @@ SemaphoreHandle_t sem_gui_ready;
 #endif
 
 extern void example_lvgl_demo_ui(lv_disp_t *disp);
+extern void headless_test_call(void);
 
 static bool example_on_vsync_event(esp_lcd_panel_handle_t panel, const esp_lcd_rgb_panel_event_data_t *event_data, void *user_data)
 {
@@ -142,6 +143,8 @@ static void example_lvgl_port_task(void *arg)
 
 void app_main(void)
 {
+    //headless_test_call();
+    
     static lv_disp_draw_buf_t disp_buf; // contains internal graphic buffer(s) called draw buffer(s)
     static lv_disp_drv_t disp_drv;      // contains callback functions
 
@@ -200,12 +203,12 @@ void app_main(void)
             .h_res = EXAMPLE_LCD_H_RES,
             .v_res = EXAMPLE_LCD_V_RES,
             // The following parameters should refer to LCD spec
-            .hsync_back_porch = 40,
-            .hsync_front_porch = 20,
-            .hsync_pulse_width = 1,
-            .vsync_back_porch = 8,
-            .vsync_front_porch = 4,
-            .vsync_pulse_width = 1,
+            .hsync_back_porch = 128,
+            .hsync_front_porch = 40,
+            .hsync_pulse_width = 48,
+            .vsync_back_porch = 45,
+            .vsync_front_porch = 13,
+            .vsync_pulse_width = 3,
             .flags.pclk_active_neg = true,
         },
         .flags.fb_in_psram = true, // allocate frame buffer in PSRAM
